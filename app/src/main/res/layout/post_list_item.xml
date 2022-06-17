@@ -6,17 +6,14 @@
     android:layout_height="match_parent"
     android:padding="16dp">
 
-    <ImageView
-        android:id="@+id/avatar"
-        android:layout_width="@dimen/post_avatar_size"
-        android:layout_height="@dimen/post_avatar_size"
-        android:contentDescription="@string/avatar_description"
-
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="ImageContrastCheck"
-        tools:srcCompat="@tools:sample/avatars"
-        android:srcCompat="@tools:sample/avatars"/>
+<ImageView
+    android:id="@+id/avatar"
+    android:layout_width="@dimen/post_avatar_size"
+    android:layout_height="@dimen/post_avatar_size"
+    android:contentDescription="@string/avatar_description"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:srcCompat="@tools:sample/avatars"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/authorName"
