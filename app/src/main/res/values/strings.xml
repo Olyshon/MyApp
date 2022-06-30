@@ -4,4 +4,5 @@
     <string name="avatar_description">Author avatar</string>
     <string name="text_about_Netology">Netology is the best </string>
     <string name="hyperlink"><a href="http://netolo.gy/fyb">netolo.gy</a></string>
+    <string name="like_icon_des">like_icon</string>
 </resources>
