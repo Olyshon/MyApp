@@ -116,7 +116,7 @@
             android:contentDescription="@string/like_icon_des"
             android:minWidth="48dp"
             android:minHeight="48dp"
-            android:onClick="onClickLikeAdd"
+
             android:src="@drawable/ic_sharp_favorite_border_24"
             app:layout_constraintStart_toStartOf="parent"
 
@@ -148,7 +148,7 @@
             tools:ignore="ImageContrastCheck,SpeakableTextPresentCheck" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/repostCount"
+            android:id="@+id/repost_count"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:singleLine="true"

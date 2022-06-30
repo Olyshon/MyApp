@@ -2,7 +2,6 @@ package ru.netology.nmedia
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.annotation.DrawableRes
 import ru.netology.nmedia.databinding.ActivityMainBinding
 import ru.netology.nmedia.dto.Post
@@ -20,22 +19,22 @@ class MainActivity : AppCompatActivity() {
             content = "hohoho",
             published = "01.01.2022",
             likes = 1999,
-            reposts = 999,
+            reposts = 500,
             views = 1345
         )
 
         binding.render(post)
+
+        binding.repost.setOnClickListener {
+            post.reposts++
+            binding.repostCount.text = checkForThousand(post.reposts)
+        }
 
         binding.like.setOnClickListener {
             post.likedByMe = !post.likedByMe
             getLikeCount(post)
             binding.like.setImageResource(getLikeIconResId(post))
             binding.likeCount.text = checkForThousand(post.likes)
-        }
-
-        binding.repost.setOnClickListener {
-            post.reposts++
-            binding.repostCount.text = checkForThousand(post.reposts)
         }
 
     }
