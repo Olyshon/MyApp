@@ -2,39 +2,36 @@ package ru.netology.nmedia
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import androidx.activity.viewModels
 import androidx.annotation.DrawableRes
+import androidx.lifecycle.ViewModelProvider
 import ru.netology.nmedia.databinding.ActivityMainBinding
 import ru.netology.nmedia.dto.Post
+import ru.netology.nmedia.viewModel.PostViewModel
 
 class MainActivity : AppCompatActivity() {
+
+    private val vm by viewModels<PostViewModel>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
 
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val post = Post(
-            id = 0L,
-            author = "Olya",
-            content = "hohoho",
-            published = "01.01.2022",
-            likes = 1999,
-            reposts = 500,
-            views = 1345
-        )
+        vm.data.observe(this) { post -> binding.render(post) }
 
-        binding.render(post)
 
         binding.repost.setOnClickListener {
-            post.reposts++
-            binding.repostCount.text = checkForThousand(post.reposts)
+            vm.onRepostClicked()
+
         }
 
         binding.like.setOnClickListener {
-            post.likedByMe = !post.likedByMe
-            getLikeCount(post)
-            binding.like.setImageResource(getLikeIconResId(post))
-            binding.likeCount.text = checkForThousand(post.likes)
+            vm.onLikeClicked()
+
         }
 
     }
@@ -49,15 +46,12 @@ class MainActivity : AppCompatActivity() {
         like.setImageResource(getLikeIconResId(post))
     }
 
+
     @DrawableRes
     fun getLikeIconResId(post: Post) =
         if (post.likedByMe) R.drawable.ic_outline_favorite_24
         else R.drawable.ic_sharp_favorite_border_24
 
-
-    private fun getLikeCount(post: Post) =
-        if (post.likedByMe) post.likes++
-        else post.likes--
 
     private fun checkForThousand(count: Int) = when {
         count in 1000..9999 && ((count / 100) % 10 == 0) -> (count / 1000).toString() + "K"
