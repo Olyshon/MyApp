@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
         val adapter = PostsAdapter(
             onLikeClicked = { post -> vm.onLikeClicked(post) },
-            onRepostClicked = { post -> vm.onRepostClicked(post) }
+           onRepostClicked = { post -> vm.onRepostClicked(post) }
         )
 
         binding.postsRecyclerView.adapter = adapter
