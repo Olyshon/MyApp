@@ -124,7 +124,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/likeCount"
-            android:layout_width="0dp"
+            android:layout_width="24dp"
             android:layout_height="wrap_content"
             android:singleLine="true"
             android:text="10"
@@ -173,7 +173,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/viewsCount"
-            android:layout_width="0dp"
+            android:layout_width="32dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:singleLine="true"
