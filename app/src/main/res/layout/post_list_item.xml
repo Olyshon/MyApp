@@ -33,7 +33,7 @@
 
             android:text="название автора поста"
             app:layout_constraintBottom_toTopOf="@id/date"
-            app:layout_constraintEnd_toStartOf="@id/options"
+            app:layout_constraintEnd_toStartOf="@id/menu"
 
             app:layout_constraintStart_toEndOf="@id/avatar"
             app:layout_constraintTop_toTopOf="@id/avatar"
@@ -57,7 +57,7 @@
             />
 
         <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/options"
+            android:id="@+id/menu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
@@ -74,7 +74,7 @@
             android:layout_height="0dp"
             app:barrierDirection="bottom"
             app:barrierMargin="@dimen/common_spacing"
-            app:constraint_referenced_ids="avatar, date, options" />
+            app:constraint_referenced_ids="avatar, date, menu" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/content"

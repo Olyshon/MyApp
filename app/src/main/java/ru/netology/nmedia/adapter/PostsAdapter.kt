@@ -3,6 +3,7 @@ package ru.netology.nmedia.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.DrawableRes
+import androidx.appcompat.widget.PopupMenu
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -10,9 +11,9 @@ import ru.netology.nmedia.R
 import ru.netology.nmedia.databinding.PostListItemBinding
 import ru.netology.nmedia.dto.Post
 
-class PostsAdapter(
-    private val onLikeClicked: (Post) -> Unit,
-    private val onRepostClicked: (Post) -> Unit
+
+internal class PostsAdapter(
+    private val interactionListener: PostInteractionListener
 ) : ListAdapter<Post, PostsAdapter.ViewHolder>(DiffCallback) {
 
 
@@ -21,7 +22,7 @@ class PostsAdapter(
         val binding = PostListItemBinding.inflate(
             inflater, parent, false
         )
-        return ViewHolder(binding, onLikeClicked, onRepostClicked)
+        return ViewHolder(binding, interactionListener)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -31,19 +32,38 @@ class PostsAdapter(
 
     class ViewHolder(
         private val binding: PostListItemBinding,
-        private val onLikeClicked: (Post) -> Unit,
-        private val onRepostClicked: (Post) -> Unit
+        listener: PostInteractionListener
     ) : RecyclerView.ViewHolder(binding.root) {
 
         private lateinit var post: Post
 
+        private val popupMenu by lazy {
+            PopupMenu(itemView.context, binding.menu).apply {
+                inflate(R.menu.options_post)
+                setOnMenuItemClickListener { menuItem ->
+                    when (menuItem.itemId) {
+                        R.id.remove -> {
+                            listener.onRemoveClicked(post)
+                            true
+                        }
+                        R.id.edit -> {
+                            listener.onEditClicked(post)
+                            true
+                        }
+                        else -> false
+                    }
+
+                }
+            }
+        }
+
         init {
             binding.like.setOnClickListener {
-                onLikeClicked(post)
+                listener.onLikeClicked(post)
             }
 
             binding.repost.setOnClickListener {
-                onRepostClicked(post)
+                listener.onRepostClicked(post)
             }
         }
 
@@ -58,14 +78,8 @@ class PostsAdapter(
                 repostCount.text = checkForThousand(post.reposts)
                 viewsCount.text = checkForThousand(post.views)
                 like.setImageResource(getLikeIconResId(post))
+                menu.setOnClickListener { popupMenu.show() }
 
-                repost.setOnClickListener {
-                    onRepostClicked(post)
-                }
-
-                like.setOnClickListener {
-                    onLikeClicked(post)
-                }
             }
         }
 
