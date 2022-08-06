@@ -3,12 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Core i5-9300/AndroidStudioProjects/MyApp/app/src/main/res/drawable/ic_baseline_close_24.xml" value="0.277" />
         <entry key="..\:/Users/Core i5-9300/AndroidStudioProjects/MyApp/app/src/main/res/drawable/ic_baseline_reply_24.xml" value="0.18" />
         <entry key="..\:/Users/Core i5-9300/AndroidStudioProjects/MyApp/app/src/main/res/drawable/ic_options_24dp.xml" value="0.18" />
         <entry key="..\:/Users/Core i5-9300/AndroidStudioProjects/MyApp/app/src/main/res/drawable/ic_sharp_favorite_border_24.xml" value="0.18" />
         <entry key="..\:/Users/Core i5-9300/AndroidStudioProjects/MyApp/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/Core i5-9300/AndroidStudioProjects/MyApp/app/src/main/res/layout/as111.xml" value="0.2552083333333333" />
-        <entry key="..\:/Users/Core i5-9300/AndroidStudioProjects/MyApp/app/src/main/res/layout/post_list_item.xml" value="0.1" />
+        <entry key="..\:/Users/Core i5-9300/AndroidStudioProjects/MyApp/app/src/main/res/layout/post_list_item.xml" value="0.33" />
+        <entry key="..\:/Users/Core i5-9300/AndroidStudioProjects/MyApp/app/src/main/res/menu/options_post.xml" value="0.27685185185185185" />
       </map>
     </option>
   </component>
