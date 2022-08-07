@@ -56,14 +56,12 @@
 
             />
 
-        <androidx.appcompat.widget.AppCompatImageButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/menu"
+            style="@style/Widget.AppTheme.menu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:minWidth="48dp"
-            android:minHeight="48dp"
-            android:src="@drawable/ic_options_24dp"
+            android:checkable="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ImageContrastCheck,SpeakableTextPresentCheck" />
@@ -111,41 +109,28 @@
             style="@style/Widget.AppTheme.LikeCheckbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checkable="true"
             android:layout_marginTop="@dimen/common_spacing"
+            android:checkable="true"
             android:contentDescription="@string/like"
 
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/downBarrier"
-            tools:text="100"/>
+            tools:text="100" />
 
 
-
-        <androidx.appcompat.widget.AppCompatImageButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/repost"
+            style="@style/Widget.AppTheme.Repost"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:background="@android:color/transparent"
-            android:minWidth="48dp"
-            android:minHeight="48dp"
-            android:rotationY="180"
-            android:src="@drawable/ic_baseline_reply_24"
+            android:checkable="true"
+            android:contentDescription="@string/repost"
+
             app:layout_constraintStart_toEndOf="@id/like"
             app:layout_constraintTop_toTopOf="@id/like"
-            tools:ignore="ImageContrastCheck,SpeakableTextPresentCheck" />
+            tools:text="199" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/repost_count"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:singleLine="true"
-
-            android:text="1"
-            app:layout_constraintBottom_toBottomOf="@id/like"
-            app:layout_constraintStart_toEndOf="@id/repost"
-            app:layout_constraintTop_toTopOf="@id/repost"
-            tools:text="1" />
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/views"

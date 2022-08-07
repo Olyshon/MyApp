@@ -79,9 +79,8 @@ internal class PostsAdapter(
                 content.text = post.content
                 date.text = post.published
                 like.text = checkForThousand(post.likes)
-                repostCount.text = checkForThousand(post.reposts)
+                repost.text = checkForThousand(post.reposts)
                 viewsCount.text = checkForThousand(post.views)
-               // like.setButtonDrawable(getLikeIconResId(post))
                 like.isChecked = post.likedByMe
 
 

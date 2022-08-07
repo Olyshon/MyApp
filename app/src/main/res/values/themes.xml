@@ -20,4 +20,20 @@
         <item name="android:minHeight">@dimen/icon_button_min_size</item>
         <item name="android:minWidth">@dimen/icon_button_min_size</item>
     </style>
+
+    <style name="Widget.AppTheme.Repost" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="icon">@drawable/ic_share_24</item>
+        <item name="iconTint">@color/buttons_tint</item>
+        <item name="android:textColor">@color/buttons_tint</item>
+        <item name="android:minHeight">@dimen/icon_button_min_size</item>
+        <item name="android:minWidth">@dimen/icon_button_min_size</item>
+    </style>
+
+    <style name="Widget.AppTheme.menu" parent="Widget.MaterialComponents.Button.TextButton.Icon">
+        <item name="icon">@drawable/ic_options_24dp</item>
+        <item name="iconTint">@color/buttons_tint</item>
+        <item name="android:textColor">@color/buttons_tint</item>
+        <item name="android:minHeight">@dimen/icon_button_min_size</item>
+        <item name="android:minWidth">@dimen/icon_button_min_size</item>
+    </style>
 </resources>
