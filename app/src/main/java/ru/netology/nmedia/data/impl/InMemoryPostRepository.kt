@@ -1,11 +1,7 @@
 package ru.netology.nmedia.data.impl
 
-import androidx.annotation.DrawableRes
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import ru.netology.nmedia.R
 import ru.netology.nmedia.data.PostRepository
-import ru.netology.nmedia.databinding.ActivityMainBinding
 import ru.netology.nmedia.dto.Post
 
 
