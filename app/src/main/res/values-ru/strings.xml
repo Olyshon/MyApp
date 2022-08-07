@@ -10,4 +10,6 @@
     <string name="menu_edit">Изменить</string>
     <string name="description_save">Сохранить</string>
     <string name="post_text">Текст поста</string>
+    <string name="like">Нравится</string>
+    <string name="repost">Поделиться</string>
 </resources>

@@ -65,6 +65,10 @@ internal class PostsAdapter(
             binding.repost.setOnClickListener {
                 listener.onRepostClicked(post)
             }
+
+            binding.menu.setOnClickListener {
+                popupMenu.show()
+            }
         }
 
         fun bind(post: Post) {
@@ -74,11 +78,11 @@ internal class PostsAdapter(
                 authorName.text = post.author
                 content.text = post.content
                 date.text = post.published
-                likeCount.text = checkForThousand(post.likes)
-                repostCount.text = checkForThousand(post.reposts)
+                like.text = checkForThousand(post.likes)
+                repost.text = checkForThousand(post.reposts)
                 viewsCount.text = checkForThousand(post.views)
-                like.setImageResource(getLikeIconResId(post))
-                menu.setOnClickListener { popupMenu.show() }
+                like.isChecked = post.likedByMe
+
 
             }
         }
@@ -86,8 +90,8 @@ internal class PostsAdapter(
 
         @DrawableRes
         fun getLikeIconResId(post: Post) =
-            if (post.likedByMe) R.drawable.ic_outline_favorite_24
-            else R.drawable.ic_sharp_favorite_border_24
+            if (post.likedByMe) R.drawable.ic_liked24
+            else R.drawable.ic_like24
 
 
         private fun checkForThousand(count: Int) = when {
