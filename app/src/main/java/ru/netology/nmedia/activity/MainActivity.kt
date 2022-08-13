@@ -1,5 +1,6 @@
-package ru.netology.nmedia
+package ru.netology.nmedia.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -7,6 +8,7 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.annotation.DrawableRes
 import androidx.lifecycle.ViewModelProvider
+import ru.netology.nmedia.R
 import ru.netology.nmedia.adapter.PostsAdapter
 import ru.netology.nmedia.databinding.ActivityMainBinding
 import ru.netology.nmedia.databinding.PostListItemBinding
@@ -31,15 +33,7 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        binding.saveButton.setOnClickListener {
-            with(binding.contentEditText) {
-                val content = text.toString()
-                vm.onSaveButtonClicked(content)
-                binding.groupCancelEditing.visibility = View.GONE
-                clearFocus()
-                hideKeyboard()
-            }
-        }
+
 
         binding.cancelEditButton.setOnClickListener {
             with(binding.contentEditText) {
@@ -53,6 +47,37 @@ class MainActivity : AppCompatActivity() {
             binding.contentEditText.setText(currentPost?.content)
             binding.cancelEditText.setText(currentPost?.content)
             binding.groupCancelEditing.visibility = View.VISIBLE
+        }
+
+        vm.sharePostContent.observe(this) { postContent ->
+            val intent = Intent().apply {
+                action = Intent.ACTION_SEND
+                putExtra(Intent.EXTRA_TEXT, postContent)
+                type = "text/plain"  // можно поставить text/*  - те текст неизвестно какого типа
+            }
+
+            val shareIntent = Intent.createChooser(
+                intent, getString(R.string.chooser_share_post)
+            )
+            startActivity(shareIntent)
+        }
+
+        val activityLauncher = registerForActivityResult(
+            NewPostActivity.ResultContract
+        ) { postContent: String? ->
+            postContent?.let(vm::onSaveButtonClicked)
+        }
+
+
+        binding.saveButton.setOnClickListener {
+            activityLauncher.launch(Unit)
+//            with(binding.contentEditText) {
+//                val content = text.toString()
+//                vm.onSaveButtonClicked(content)
+//                binding.groupCancelEditing.visibility = View.GONE
+//                clearFocus()
+//                hideKeyboard()
+//            }
         }
     }
 

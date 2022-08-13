@@ -9,6 +9,9 @@
     <string name="menu_edit">Edit</string>
     <string name="post_text">Post text</string>
     <string name="description_save">Save</string>
-    <string name="like" >Like</string>
+    <string name="like">Like</string>
     <string name="repost">Repost</string>
+    <string name="exampleText" translatable="false">Это вторая активити!</string>
+    <string name="chooser_share_post">Поделиться</string>
+    <string name="description_post_save" >Save</string>
 </resources>
