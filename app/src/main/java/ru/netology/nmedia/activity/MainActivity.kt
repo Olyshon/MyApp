@@ -32,9 +32,6 @@ class MainActivity : AppCompatActivity() {
             adapter.submitList(posts)
         }
 
-
-
-
         binding.cancelEditButton.setOnClickListener {
             with(binding.contentEditText) {
                 vm.onCancelEditingClicked()

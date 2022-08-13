@@ -108,6 +108,7 @@
             style="@style/Widget.AppTheme.LikeCheckbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:checkable="true"
             android:layout_marginTop="@dimen/common_spacing"
             android:contentDescription="@string/like"
             app:layout_constraintStart_toStartOf="parent"

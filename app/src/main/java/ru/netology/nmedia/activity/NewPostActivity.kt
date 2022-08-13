@@ -38,7 +38,7 @@ class NewPostActivity : AppCompatActivity() {
         private const val POST_CONTENT_EXTRA_KEY = "postContent"
     }
 
-    object ResultContract: ActivityResultContract<Unit, String?>() {
+    object ResultContract: ActivityResultContract<Unit, String?>() {  //поправить входной параметр на string?
         override fun createIntent(context: Context, input: Unit) =
             Intent(context, NewPostActivity::class.java)   //сформировали явный интент для запуска активити
 
