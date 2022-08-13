@@ -61,7 +61,6 @@
             style="@style/Widget.AppTheme.menu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checkable="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ImageContrastCheck,SpeakableTextPresentCheck" />
@@ -110,27 +109,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/common_spacing"
-            android:checkable="true"
             android:contentDescription="@string/like"
-
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/downBarrier"
             tools:text="100" />
 
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/repost"
+            android:id="@+id/share"
             style="@style/Widget.AppTheme.Repost"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:checkable="true"
             android:contentDescription="@string/repost"
-
             app:layout_constraintStart_toEndOf="@id/like"
             app:layout_constraintTop_toTopOf="@id/like"
             tools:text="199" />
-
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/views"
@@ -153,7 +147,7 @@
             android:text="5"
             app:layout_constraintBottom_toBottomOf="@id/like"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/repost"
+            app:layout_constraintTop_toTopOf="@id/share"
             tools:text="5" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

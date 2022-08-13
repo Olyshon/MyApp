@@ -62,8 +62,8 @@ internal class PostsAdapter(
                 listener.onLikeClicked(post)
             }
 
-            binding.repost.setOnClickListener {
-                listener.onRepostClicked(post)
+            binding.share.setOnClickListener {
+                listener.onShareClicked(post)
             }
 
             binding.menu.setOnClickListener {
@@ -79,7 +79,7 @@ internal class PostsAdapter(
                 content.text = post.content
                 date.text = post.published
                 like.text = checkForThousand(post.likes)
-                repost.text = checkForThousand(post.reposts)
+                share.text = checkForThousand(post.reposts)
                 viewsCount.text = checkForThousand(post.views)
                 like.isChecked = post.likedByMe
 
