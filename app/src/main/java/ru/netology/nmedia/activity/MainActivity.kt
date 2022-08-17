@@ -1,6 +1,7 @@
 package ru.netology.nmedia.activity
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -27,26 +28,37 @@ class MainActivity : AppCompatActivity() {
 
 
         vm.shareEvent.observe(this) { postContent ->
-            val intent = Intent().apply { //устанавливаем поля интенту далее
+            val intent = Intent().apply {
                 action = Intent.ACTION_SEND
-                type = "text/plain"  // можно поставить text/*  - те текст неизвестно какого типа
-                putExtra(
+                type = "text/plain"
+                putExtra(    //  аналогично записи  extras?.putString(Intent.EXTRA_TEXT,postContent)
                     Intent.EXTRA_TEXT,
                     postContent
-                ) // кладем контент пос та :первый параметр - ключ,второй -значение
-                //  аналогично записи  extras?.putString(Intent.EXTRA_TEXT,postContent)
+                )
+
             }
 
             val shareIntent =
-                Intent.createChooser(  //интент оборачиваем в другой интент, чтобы применить красивую выбирашку
+                Intent.createChooser(
                     intent, getString(R.string.chooser_share_post)
                 )
             startActivity(shareIntent)
         }
 
 
+        vm.playVideoEvent.observe(this) { videoURL ->
+
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(videoURL))
+            val videoIntent =
+                Intent.createChooser(
+                    intent, getString(R.string.chooser_play_video)
+                )
+            startActivity(videoIntent)
+        }
+
+
         val activityLauncher =
-            registerForActivityResult( //регистрируемся на результат выполнения активити NewPostActivity
+            registerForActivityResult(
                 NewPostActivity.ResultContract
             ) { postContent: String? ->
                 postContent?.let(vm::onAddButtonClicked)

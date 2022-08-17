@@ -24,6 +24,7 @@ class NewPostActivity : AppCompatActivity() {
         }
 
 
+
         val text = intent.getStringExtra(POST_CONTENT_EXTRA_KEY)
 
         binding.edit.setText(text)

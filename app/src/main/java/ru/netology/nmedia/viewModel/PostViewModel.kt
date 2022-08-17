@@ -16,8 +16,9 @@ class PostViewModel : ViewModel(), PostInteractionListener {
 
     val shareEvent = SingleLiveEvent<String>()
     val editEvent = SingleLiveEvent<String>()
+    val playVideoEvent = SingleLiveEvent<String?>()
 
-    val currentPost = MutableLiveData<Post?>(null)
+    private val currentPost = MutableLiveData<Post?>(null)
 
     fun onAddButtonClicked(content: String) {
         if (content.isBlank()) return
@@ -28,7 +29,9 @@ class PostViewModel : ViewModel(), PostInteractionListener {
             id = PostRepository.NEW_POST_ID,
             author = "кто-то",
             content = content,
-            published = "01.01.2021"
+            published = "01.01.2021",
+            video = null
+
         )
         repository.save(post)
         currentPost.value = null
@@ -51,14 +54,16 @@ class PostViewModel : ViewModel(), PostInteractionListener {
         editEvent.value = post.content
     }
 
+    override fun onPlayVideoClicked(post: Post) {
+        currentPost.value = post
+        playVideoEvent.value = post.video
+    }
+
     override fun onCancelEditingClicked() {
         currentPost.value = null
         return
     }
-//
-//    override fun onCreateNewPost(post: Post) {
-//        currentPost.value = post
-//    }
+
 
     //endregion PostInteractionListener
 

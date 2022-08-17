@@ -1,6 +1,7 @@
 package ru.netology.nmedia.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.DrawableRes
 import androidx.appcompat.widget.PopupMenu
@@ -61,11 +62,15 @@ internal class PostsAdapter(
             binding.like.setOnClickListener {
                 listener.onLikeClicked(post)
             }
-
             binding.share.setOnClickListener {
                 listener.onShareClicked(post)
             }
-
+            binding.playBottom.setOnClickListener {
+                listener.onPlayVideoClicked(post)
+            }
+            binding.videoScreen.setOnClickListener {
+                listener.onPlayVideoClicked(post)
+            }
             binding.menu.setOnClickListener {
                 popupMenu.show()
             }
@@ -82,15 +87,9 @@ internal class PostsAdapter(
                 share.text = checkForThousand(post.reposts)
                 viewsCount.text = checkForThousand(post.views)
                 like.isChecked = post.likedByMe
-
+                if (post.video == null) groupVideo.visibility = View.GONE
             }
         }
-
-
-        @DrawableRes
-        fun getLikeIconResId(post: Post) =
-            if (post.likedByMe) R.drawable.ic_liked24
-            else R.drawable.ic_like24
 
 
         private fun checkForThousand(count: Int) = when {
