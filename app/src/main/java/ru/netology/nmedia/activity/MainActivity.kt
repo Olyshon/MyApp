@@ -3,17 +3,10 @@ package ru.netology.nmedia.activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import androidx.activity.viewModels
-import androidx.annotation.DrawableRes
-import androidx.lifecycle.ViewModelProvider
 import ru.netology.nmedia.R
 import ru.netology.nmedia.adapter.PostsAdapter
 import ru.netology.nmedia.databinding.ActivityMainBinding
-import ru.netology.nmedia.databinding.PostListItemBinding
-import ru.netology.nmedia.dto.Post
-import ru.netology.nmedia.util.hideKeyboard
 import ru.netology.nmedia.viewModel.PostViewModel
 
 class MainActivity : AppCompatActivity() {
@@ -32,50 +25,42 @@ class MainActivity : AppCompatActivity() {
             adapter.submitList(posts)
         }
 
-        binding.cancelEditButton.setOnClickListener {
-            with(binding.contentEditText) {
-                vm.onCancelEditingClicked()
-                binding.groupCancelEditing.visibility = View.GONE
-                clearFocus()
-                hideKeyboard()
-            }
-        }
-        vm.currentPost.observe(this) { currentPost ->
-            binding.contentEditText.setText(currentPost?.content)
-            binding.cancelEditText.setText(currentPost?.content)
-            binding.groupCancelEditing.visibility = View.VISIBLE
-        }
 
-        vm.sharePostContent.observe(this) { postContent ->
-            val intent = Intent().apply {
+        vm.shareEvent.observe(this) { postContent ->
+            val intent = Intent().apply { //устанавливаем поля интенту далее
                 action = Intent.ACTION_SEND
-                putExtra(Intent.EXTRA_TEXT, postContent)
                 type = "text/plain"  // можно поставить text/*  - те текст неизвестно какого типа
+                putExtra(
+                    Intent.EXTRA_TEXT,
+                    postContent
+                ) // кладем контент пос та :первый параметр - ключ,второй -значение
+                //  аналогично записи  extras?.putString(Intent.EXTRA_TEXT,postContent)
             }
 
-            val shareIntent = Intent.createChooser(
-                intent, getString(R.string.chooser_share_post)
-            )
+            val shareIntent =
+                Intent.createChooser(  //интент оборачиваем в другой интент, чтобы применить красивую выбирашку
+                    intent, getString(R.string.chooser_share_post)
+                )
             startActivity(shareIntent)
         }
 
-        val activityLauncher = registerForActivityResult(
-            NewPostActivity.ResultContract
-        ) { postContent: String? ->
-            postContent?.let(vm::onSaveButtonClicked)
-        }
+
+        val activityLauncher =
+            registerForActivityResult( //регистрируемся на результат выполнения активити NewPostActivity
+                NewPostActivity.ResultContract
+            ) { postContent: String? ->
+                postContent?.let(vm::onAddButtonClicked)
+            }
 
 
-        binding.saveButton.setOnClickListener {
-            activityLauncher.launch(Unit)
-//            with(binding.contentEditText) {
-//                val content = text.toString()
-//                vm.onSaveButtonClicked(content)
-//                binding.groupCancelEditing.visibility = View.GONE
-//                clearFocus()
-//                hideKeyboard()
-//            }
+        vm.editEvent.observe(this) { postContent ->
+            activityLauncher.launch(postContent)
         }
+
+        binding.addButton.setOnClickListener {
+            activityLauncher.launch(null)
+        }
+
     }
 
 

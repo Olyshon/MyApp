@@ -83,7 +83,6 @@ internal class PostsAdapter(
                 viewsCount.text = checkForThousand(post.views)
                 like.isChecked = post.likedByMe
 
-
             }
         }
 

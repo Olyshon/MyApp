@@ -14,16 +14,21 @@ class ShareActivity: AppCompatActivity() {
         val binding = ActivityShareBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val intent = intent ?: return
-        if (intent.action != Intent.ACTION_SEND) return
+        val intent = intent ?: return // если интента по какой-то причине нет - возвращаемся из активити
+        if (intent.action != Intent.ACTION_SEND) return // если тип action не sand, то возвращаемся в активити
 
-        val text = intent.getStringExtra(Intent.EXTRA_TEXT)
+        val text = intent.getStringExtra(Intent.EXTRA_TEXT) //проверяем по тому же ключу, что отправляли в MainActivity
         if (text.isNullOrBlank()) {
             Snackbar.make(binding.root, "присланный текст пустой", Snackbar.LENGTH_INDEFINITE)
-                .setAction(android.R.string.ok) { finish() } //прилепили кнопку Ок, чтобы снэкбар не висел вечно
-                .show() // показываем снэкбар
+                .setAction(android.R.string.ok) {
+                    finish()  //прилепили кнопку Ок для закрытия, чтобы снэкбар не висел вечно
+                }.show() // показываем снэкбар
         } else {
-            binding.root.text = text
+            binding.shareContent.text = text
+        }
+
+        binding.okShare.setOnClickListener {
+            finish()
         }
     }
 

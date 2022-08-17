@@ -4,8 +4,10 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.provider.AlarmClock.EXTRA_MESSAGE
 import androidx.activity.result.contract.ActivityResultContract
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.snackbar.Snackbar
 import ru.netology.nmedia.databinding.ActivityNewPostBinding
 
 class NewPostActivity : AppCompatActivity() {
@@ -16,9 +18,16 @@ class NewPostActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.edit.requestFocus() //запрашиваем фокус на поле для редактирования
+
         binding.ok.setOnClickListener {
             onOkButtonClicked(binding.edit.text?.toString())
         }
+
+
+        val text = intent.getStringExtra(POST_CONTENT_EXTRA_KEY)
+
+        binding.edit.setText(text)
+
     }
 
     private fun onOkButtonClicked(postContent: String?) {
@@ -28,26 +37,26 @@ class NewPostActivity : AppCompatActivity() {
             setResult(Activity.RESULT_CANCELED, intent)
         } else {
             intent.putExtra(POST_CONTENT_EXTRA_KEY, postContent)
-            setResult(Activity.RESULT_OK, intent)
-
+            setResult(Activity.RESULT_OK, intent) //сообщаем результат - успешное выполнение
         }
-        finish() //завершаем активити
+        finish()
     }
 
-    private companion object {
+    private companion object { //формируем ключ для интента
         private const val POST_CONTENT_EXTRA_KEY = "postContent"
     }
 
-    object ResultContract: ActivityResultContract<Unit, String?>() {  //поправить входной параметр на string?
-        override fun createIntent(context: Context, input: Unit) =
-            Intent(context, NewPostActivity::class.java)   //сформировали явный интент для запуска активити
+    object ResultContract :
+        ActivityResultContract<String?, String?>() {
+        override fun createIntent(context: Context, input: String?) =
+            Intent(context, NewPostActivity::class.java)
+                .putExtra(POST_CONTENT_EXTRA_KEY, input)
 
         override fun parseResult(resultCode: Int, intent: Intent?): String? {
             if (resultCode != Activity.RESULT_OK) return null
             intent ?: return null
             return intent.getStringExtra(POST_CONTENT_EXTRA_KEY)
         }
-
 
 
     }
