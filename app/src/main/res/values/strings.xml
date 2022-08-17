@@ -14,4 +14,5 @@
     <string name="exampleText" translatable="false">Это вторая активити!</string>
     <string name="chooser_share_post">Поделиться</string>
     <string name="description_post_save" >Save</string>
+    <string name="chooser_play_video">Play</string>
 </resources>

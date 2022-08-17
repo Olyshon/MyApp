@@ -13,25 +13,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApp"
         tools:targetApi="31">
-        <activity
-            android:name=".activity.SecondEntryPointActivity"
-            android:label="Вторая точка входа"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
+
 
         <activity
             android:name=".activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
 
         <activity
             android:name=".activity.ShareActivity"
@@ -44,11 +36,7 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".activity.PostContentActivity"
-            android:exported="false">
 
-        </activity>
 
         <activity
             android:name=".activity.NewPostActivity"

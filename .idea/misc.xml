@@ -3,19 +3,22 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Core i5-9300/AndroidStudioProjects/MyApp/app/src/main/res/drawable/ic_add_48.xml" value="0.248" />
+        <entry key="..\:/Users/Core i5-9300/AndroidStudioProjects/MyApp/app/src/main/res/drawable/ic_baseline_add_48.xml" value="0.248" />
         <entry key="..\:/Users/Core i5-9300/AndroidStudioProjects/MyApp/app/src/main/res/drawable/ic_baseline_close_24.xml" value="0.277" />
         <entry key="..\:/Users/Core i5-9300/AndroidStudioProjects/MyApp/app/src/main/res/drawable/ic_baseline_reply_24.xml" value="0.18" />
         <entry key="..\:/Users/Core i5-9300/AndroidStudioProjects/MyApp/app/src/main/res/drawable/ic_like24dp.xml" value="0.166" />
         <entry key="..\:/Users/Core i5-9300/AndroidStudioProjects/MyApp/app/src/main/res/drawable/ic_ok_24dp.xml" value="0.2755" />
         <entry key="..\:/Users/Core i5-9300/AndroidStudioProjects/MyApp/app/src/main/res/drawable/ic_options_24dp.xml" value="0.18" />
         <entry key="..\:/Users/Core i5-9300/AndroidStudioProjects/MyApp/app/src/main/res/drawable/ic_outline_favorite_24.xml" value="0.166" />
+        <entry key="..\:/Users/Core i5-9300/AndroidStudioProjects/MyApp/app/src/main/res/drawable/ic_play_circle_48.xml" value="0.2635" />
         <entry key="..\:/Users/Core i5-9300/AndroidStudioProjects/MyApp/app/src/main/res/drawable/ic_save_48.xml" value="0.166" />
         <entry key="..\:/Users/Core i5-9300/AndroidStudioProjects/MyApp/app/src/main/res/drawable/ic_share_24.xml" value="0.307" />
         <entry key="..\:/Users/Core i5-9300/AndroidStudioProjects/MyApp/app/src/main/res/drawable/ic_sharp_favorite_border_24.xml" value="0.18" />
         <entry key="..\:/Users/Core i5-9300/AndroidStudioProjects/MyApp/app/src/main/res/layout/activity_main.xml" value="0.33" />
-        <entry key="..\:/Users/Core i5-9300/AndroidStudioProjects/MyApp/app/src/main/res/layout/activity_new_post.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Core i5-9300/AndroidStudioProjects/MyApp/app/src/main/res/layout/activity_second_entry_point.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Core i5-9300/AndroidStudioProjects/MyApp/app/src/main/res/layout/activity_share.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Core i5-9300/AndroidStudioProjects/MyApp/app/src/main/res/layout/activity_new_post.xml" value="0.22" />
+        <entry key="..\:/Users/Core i5-9300/AndroidStudioProjects/MyApp/app/src/main/res/layout/activity_second_entry_point.xml" value="0.25" />
+        <entry key="..\:/Users/Core i5-9300/AndroidStudioProjects/MyApp/app/src/main/res/layout/activity_share.xml" value="0.2" />
         <entry key="..\:/Users/Core i5-9300/AndroidStudioProjects/MyApp/app/src/main/res/layout/as111.xml" value="0.2552083333333333" />
         <entry key="..\:/Users/Core i5-9300/AndroidStudioProjects/MyApp/app/src/main/res/layout/intent_handler_activity.xml" value="0.17831813576494426" />
         <entry key="..\:/Users/Core i5-9300/AndroidStudioProjects/MyApp/app/src/main/res/layout/post_content_activity.xml" value="0.17831813576494426" />

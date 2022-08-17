@@ -14,7 +14,6 @@ class InMemoryPostRepository : PostRepository {
             "Data value should not be null"
         }
 
-
     override val data = MutableLiveData(
         List(GENERATED_POSTS_AMOUNT) { index ->
             Post(
@@ -25,7 +24,8 @@ class InMemoryPostRepository : PostRepository {
                 likes = 999,
                 reposts = 996,
                 views = 1345,
-                likedByMe = false
+                likedByMe = false,
+                video = "https://www.youtube.com/watch?v=ny2mWiUuh_U"
             )
         }
     )

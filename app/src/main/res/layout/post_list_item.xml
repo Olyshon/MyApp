@@ -94,6 +94,34 @@
             app:layout_constraintTop_toBottomOf="@id/content"
             tools:text="@string/hyperlink" />
 
+        <ImageView
+            android:id="@+id/videoScreen"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:contentDescription="заглушка видео"
+            android:src="@drawable/ic_banner_foreground"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/hyberlink_block"
+            tools:srcCompat="@drawable/ic_banner_foreground" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/playBottom"
+            style="@style/Widget.AppTheme.Play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="Play"
+            app:layout_constraintBottom_toBottomOf="@id/videoScreen"
+            app:layout_constraintEnd_toEndOf="@id/videoScreen"
+            app:layout_constraintStart_toStartOf="@id/videoScreen"
+            app:layout_constraintTop_toTopOf="@id/videoScreen" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/groupVideo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            app:constraint_referenced_ids="playBottom,videoScreen" />
 
         <androidx.constraintlayout.widget.Barrier
             android:id="@+id/downBarrier"
@@ -101,7 +129,7 @@
             android:layout_height="0dp"
             app:barrierDirection="bottom"
             app:barrierMargin="@dimen/common_spacing"
-            app:constraint_referenced_ids="hyberlink_block" />
+            app:constraint_referenced_ids="videoScreen" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/like"
@@ -109,6 +137,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/common_spacing"
+            android:checkable="true"
             android:contentDescription="@string/like"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/downBarrier"
@@ -149,6 +178,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/share"
             tools:text="5" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
