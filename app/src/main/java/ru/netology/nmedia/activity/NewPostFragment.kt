@@ -13,6 +13,7 @@ import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import ru.netology.nmedia.databinding.FragmentNewPostBinding
+import ru.netology.nmedia.util.LongArg
 import ru.netology.nmedia.util.StringArg
 import ru.netology.nmedia.viewModel.PostViewModel
 
@@ -25,7 +26,7 @@ class NewPostFragment : Fragment() {
     ): View {
         val binding = FragmentNewPostBinding.inflate(inflater, container, false)
 
-        val viewModel: PostViewModel by viewModels(ownerProducer = ::requireParentFragment) // делаем общую viewModel для двух фрагментов.
+        val viewModel: PostViewModel by viewModels(ownerProducer = ::requireParentFragment)
 
 //          val text = arguments?.textArg
 //          text?.let {binding.edit.setText(it)}
@@ -33,9 +34,9 @@ class NewPostFragment : Fragment() {
 //       arguments?.textArg?.let(binding.edit::setText)
 
 
-        arguments?.textArg?.let(binding.edit::setText) // проставляем прищедшие данные postContent в поле редактирования
+        arguments?.textArg?.let(binding.edit::setText)
 
-        binding.edit.requestFocus() //запрашиваем фокус на поле для редактирования
+        binding.edit.requestFocus()
 
         binding.ok.setOnClickListener {
             val text = binding.edit.text
@@ -43,29 +44,14 @@ class NewPostFragment : Fragment() {
                 val content = text.toString()
                 viewModel.onAddButtonClicked(content)
             }
-            findNavController().navigateUp() // закрываем фрагмент
+            findNavController().navigateUp()
         }
         return binding.root
     }
 
 
 
-//    Версия максима
-//    private fun onOkButtonClicked(binding: FragmentNewPostBinding) {  //не уверена
-//
-//        val text = binding.edit.text
-//
-//        if (!text.isNullOrBlank()) {
-//            val resultBundle = Bundle(1)
-//            resultBundle.putString(RESULT_KEY, text.toString())
-//            setFragmentResult(REQUEST_KEY, resultBundle)
-//
-//        }
-//        parentFragmentManager.popBackStack()
-//    }
-
-
-companion object { //формируем ключ для интента
+companion object {
     const val REQUEST_KEY = "requestKey"
     const val RESULT_KEY = "postNewContent"
 

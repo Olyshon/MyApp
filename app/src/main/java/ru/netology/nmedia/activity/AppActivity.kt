@@ -24,7 +24,6 @@ class AppActivity : AppCompatActivity() {
         binding = ActivityAppBinding.inflate(layoutInflater)
         setContentView(binding.root)
         handleIntent(intent)
-
     }
 
     override fun onNewIntent(intent: Intent?) {
@@ -48,12 +47,11 @@ class AppActivity : AppCompatActivity() {
                 return@let
             }
 
-
             val fragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
             fragment.navController.navigate(
                 R.id.action_feedFragment_to_newPostFragment,
-                Bundle().apply { // в этот переход передаем данные в bundle
-                    textArg = text  // в поле расширения записываем текст, который мы извлекли из интента
+                Bundle().apply {
+                    textArg = text
                 }
             )
         }

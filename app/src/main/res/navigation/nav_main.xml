@@ -13,6 +13,11 @@
         <action
             android:id="@+id/action_feedFragment_to_newPostFragment"
             app:destination="@id/newPostFragment" />
+
+        <action
+            android:id="@+id/action_feedFragment_to_onePostFragment"
+            app:destination="@id/onePostFragment" />
+
     </fragment>
 
     <fragment
@@ -20,4 +25,16 @@
         android:name="ru.netology.nmedia.activity.NewPostFragment"
         android:label="fragment_new_post"
         tools:layout="@layout/fragment_new_post" />
+
+    <fragment
+        android:id="@+id/onePostFragment"
+        android:name="ru.netology.nmedia.activity.OnePostFragment"
+        android:label="fragment_one_post"
+        tools:layout="@layout/fragment_one_post" >
+        <action
+            android:id="@+id/action_onePostFragment_to_newPostFragment"
+            app:destination="@id/newPostFragment" />
+    </fragment>
+
+
 </navigation>
