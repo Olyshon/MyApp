@@ -41,21 +41,7 @@ class SharedPrefPostRepository(
         }
 
     override val data: MutableLiveData<List<Post>>
-//        List(GENERATED_POSTS_AMOUNT) { index ->
-//            Post(
-//                id = index + 1L,
-//                author = "Какой-то автор",
-//                content = "Тестовый пост №$index",
-//                published = "21 мая в 22:12",
-//                likes = 999,
-//                reposts = 996,
-//                views = 1345,
-//                likedByMe = false,
-//                video = "https://www.youtube.com/watch?v=ny2mWiUuh_U"
-//            )
-//        }
-//    )
-//
+
 
     init {
         val serialezedPosts = prefs.getString(POSTS_PREFS_KEY, null)

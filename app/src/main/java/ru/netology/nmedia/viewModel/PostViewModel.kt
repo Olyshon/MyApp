@@ -23,6 +23,7 @@ class PostViewModel(application: Application) : AndroidViewModel(application), P
     val shareEvent = SingleLiveEvent<String>()
     val editEvent = SingleLiveEvent<String>()
     val playVideoEvent = SingleLiveEvent<String?>()
+    val onePostEvent = SingleLiveEvent<Post>()
 
     private val currentPost = MutableLiveData<Post?>(null)
 
@@ -36,7 +37,7 @@ class PostViewModel(application: Application) : AndroidViewModel(application), P
             author = "кто-то",
             content = content,
             published = "01.01.2021",
-            video = null
+            video = "https://www.youtube.com/watch?v=yrTtU9TXI9M"
 
         )
         repository.save(post)
@@ -68,6 +69,11 @@ class PostViewModel(application: Application) : AndroidViewModel(application), P
     override fun onCancelEditingClicked() {
         currentPost.value = null
         return
+    }
+
+    override fun onPostClicked(post: Post) {
+        currentPost.value = post
+        onePostEvent.value = post
     }
 
 

@@ -74,6 +74,9 @@ internal class PostsAdapter(
             binding.menu.setOnClickListener {
                 popupMenu.show()
             }
+            binding.root.setOnClickListener {
+                listener.onPostClicked(post)
+            }
         }
 
         fun bind(post: Post) {
