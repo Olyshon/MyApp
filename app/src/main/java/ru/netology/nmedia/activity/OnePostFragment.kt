@@ -1,5 +1,7 @@
 package ru.netology.nmedia.activity
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -42,7 +44,30 @@ class OnePostFragment : Fragment() {
             findNavController().navigate(
                 R.id.action_onePostFragment_to_newPostFragment,
                 Bundle().apply { textArg = postContent })
+        }
+        viewModel.playVideoEvent.observe(viewLifecycleOwner) { videoURL ->
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(videoURL))
+            val videoIntent =
+                Intent.createChooser(
+                    intent, getString(R.string.chooser_play_video)
+                )
+            startActivity(videoIntent)
+        }
+        viewModel.shareEvent.observe(viewLifecycleOwner) { postContent ->
+            val intent = Intent().apply {
+                action = Intent.ACTION_SEND
+                type = "text/plain"
+                putExtra(    //  аналогично записи  extras?.putString(Intent.EXTRA_TEXT,postContent)
+                    Intent.EXTRA_TEXT,
+                    postContent
+                )
+            }
 
+            val shareIntent =
+                Intent.createChooser(
+                    intent, getString(R.string.chooser_share_post)
+                )
+            startActivity(shareIntent)
         }
 
         return binding.root
